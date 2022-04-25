@@ -12,7 +12,7 @@ const Authentication = () => {
 					<Col>
 						<SignInForm />
 					</Col>
-					<Col>
+					<Col className='mx-md-4'>
 						<SignUpForm />
 					</Col>
 				</Row>
