@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 import {
 	getAuth,
 	signInWithRedirect,
@@ -21,6 +22,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
+const analytics = getAnalytics(firebaseApp);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -38,7 +40,7 @@ export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (
 	userAuth,
-	additionalInformation = {}
+	additionalInformation = { displayName: 'new user' }
 ) => {
 	if (!userAuth) return;
 

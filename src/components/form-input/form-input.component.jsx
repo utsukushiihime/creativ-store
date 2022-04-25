@@ -1,5 +1,7 @@
 import './form-input.styles.scss';
 
+// TODO Add Styled Components
+
 const FormInput = ({ label, ...otherProps }) => {
 	return (
 		<div className='group'>
