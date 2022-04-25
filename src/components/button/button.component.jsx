@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import './button.styles.scss';
 
 const ButtonContainer = styled.div`
 	min-width: 165px;
@@ -47,6 +46,8 @@ const ButtonContainer = styled.div`
 		}
 	}
 `;
+
+// FIXME - button type classes is not working
 
 const BUTTON_TYPE_CLASSES = {
 	google: 'google-sign-in',
