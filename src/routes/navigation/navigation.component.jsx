@@ -38,6 +38,7 @@ const Navigation = () => {
             Consulting
           </NavDropdown.Item>
         </NavDropdown>
+        <Nav.Link href="sign-in">Sign In</Nav.Link>
       </Nav>
       <Form className="d-flex">
         <FormControl
