@@ -6,7 +6,6 @@ import SignInForm from '../../components/sign-in-form/sign-in-form.component';
 const Authentication = () => {
 	return (
 		<div className='container mt-4'>
-			<h1 className='my-4'>Sign In Page</h1>
 			<Container>
 				<Row>
 					<Col>

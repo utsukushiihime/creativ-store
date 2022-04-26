@@ -8,6 +8,7 @@ import {
 	signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCGUPwOX3AjGFlbY8NJm_JXJtkSKr6U7_Q',
@@ -22,6 +23,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
+const analytics = getAnalytics(firebaseApp);
 
 googleProvider.setCustomParameters({
 	prompt: 'select_account',
