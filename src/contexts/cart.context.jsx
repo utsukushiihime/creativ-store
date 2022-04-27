@@ -46,6 +46,7 @@ export const CartContext = createContext({
 	addItemToCart: () => {},
 	removeItemFromCart: () => {},
 	cartCount: 0,
+	cartTotal: 0,
 });
 
 export const CartProvider = ({ children }) => {
@@ -69,6 +70,17 @@ export const CartProvider = ({ children }) => {
 		setCartItems(removeCartItem(cartItems, productToRemove));
 	};
 
+	const cartTotal = cartItems.reduce((total, cartItem) => {
+		total += cartItem.quantity * cartItem.price;
+		return total;
+	}, 0);
+
+	const clearItemFromCart = (productToClear) => {
+		setCartItems(
+			cartItems.filter((cartItem) => cartItem.id !== productToClear.id)
+		);
+	};
+
 	const value = {
 		isCartOpen,
 		setIsCartOpen,
@@ -76,6 +88,8 @@ export const CartProvider = ({ children }) => {
 		addItemToCart,
 		cartCount,
 		removeItemFromCart,
+		cartTotal,
+		clearItemFromCart,
 	};
 
 	return (
