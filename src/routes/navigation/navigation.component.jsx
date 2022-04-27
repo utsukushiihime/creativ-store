@@ -1,19 +1,19 @@
 import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
-import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '../../assets/images/logos/creativarian-logo.svg';
 import { UserContext } from '../../contexts/user.context';
+import { CartContext } from '../../contexts/cart.context';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
+import CartIcon from '../../components/cart-icon/cart-icon.component';
+import CartDropDown from '../../components/cart-dropdown/cart-dropdown.component';
 
-const StyledLogo = styled(Logo)`
-	width: 50px;
-	height: 50px;
-`;
 
 const Navigation = () => {
 	const { currentUser } = useContext(UserContext);
+	const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
 	const signOutHandler = async () => {
 		await signOutUser();
 
@@ -25,7 +25,7 @@ const Navigation = () => {
 			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 				<Container fluid>
 					<Navbar.Brand href='/'>
-						<StyledLogo className='logo' />
+						<Logo style={{width: '50px'}} className='logo' />
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls='navbarScroll' />
 					<Navbar.Collapse
@@ -63,6 +63,7 @@ const Navigation = () => {
 						</Nav>
 						<Nav>
 							<Nav.Link href='shop'>Shop</Nav.Link>
+
 							{currentUser ? (
 								<Nav.Link>
 									<span onClick={signOutHandler}>
@@ -73,6 +74,8 @@ const Navigation = () => {
 								<Nav.Link href='/auth'>Sign In</Nav.Link>
 							)}
 						</Nav>
+							<CartIcon />
+							{isCartOpen && <CartDropDown />}
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
