@@ -1,16 +1,11 @@
+import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import {
-	Navbar,
-	Container,
-	NavDropdown,
-	Nav,
-	Form,
-	FormControl,
-	Button,
-} from 'react-bootstrap';
+import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '../../assets/images/logos/creativarian-logo.svg';
+import { UserContext } from '../../contexts/user.context';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 
 const StyledLogo = styled(Logo)`
 	width: 50px;
@@ -18,22 +13,31 @@ const StyledLogo = styled(Logo)`
 `;
 
 const Navigation = () => {
+	const { currentUser } = useContext(UserContext);
+	const signOutHandler = async () => {
+		await signOutUser();
+
+		console.log('signed out');
+	};
+
 	return (
 		<>
-			<Navbar bg='light' expand='lg'>
+			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 				<Container fluid>
 					<Navbar.Brand href='/'>
 						<StyledLogo className='logo' />
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls='navbarScroll' />
-					<Navbar.Collapse id='navbarScroll'>
+					<Navbar.Collapse
+						id='navbarScroll'
+						className='justify-content-end'
+					>
 						<Nav
 							className='me-auto my-2 my-lg-0'
 							style={{ maxHeight: '100px' }}
 							navbarScroll
 						>
 							<Nav.Link href='/'>Home</Nav.Link>
-							<Nav.Link href='shop'>Shop</Nav.Link>
 							<NavDropdown
 								title='Services'
 								id='navbarScrollingDropdown'
@@ -56,17 +60,19 @@ const Navigation = () => {
 									Consulting
 								</NavDropdown.Item>
 							</NavDropdown>
-							<Nav.Link href='/auth'>Sign In</Nav.Link>
 						</Nav>
-						<Form className='d-flex'>
-							<FormControl
-								type='search'
-								placeholder='Search'
-								className='me-2'
-								aria-label='Search'
-							/>
-							<Button variant='outline-success'>Search</Button>
-						</Form>
+						<Nav>
+							<Nav.Link href='shop'>Shop</Nav.Link>
+							{currentUser ? (
+								<Nav.Link>
+									<span onClick={signOutHandler}>
+										Sign Out
+									</span>
+								</Nav.Link>
+							) : (
+								<Nav.Link href='/auth'>Sign In</Nav.Link>
+							)}
+						</Nav>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
