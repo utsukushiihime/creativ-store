@@ -20,7 +20,8 @@ a {
   text-decoration: none;
 }
 
-// OVERRIDES
+// OVERRIDES 
+//TODO Clean up the overrides
 
 .navbar-dark .navbar-nav .nav-link {
   color: #ffffff;
@@ -47,4 +48,12 @@ hr.dropdown-divider {
 .dropdown-item:hover {
   color: #fff !important;
   background-color: #000 !important;
+}
+
+.directory-container {
+  margin-top: 85px;
+}
+
+.row {
+  margin-top: 120px !important;
 }

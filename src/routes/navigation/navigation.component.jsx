@@ -21,7 +21,13 @@ const Navigation = () => {
 
 	return (
 		<>
-			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+			<Navbar
+				collapseOnSelect
+				expand='lg'
+				bg='dark'
+				variant='dark'
+				fixed='top'
+			>
 				<Container fluid>
 					<Navbar.Brand href='/'>
 						<Logo style={{ width: '50px' }} className='logo' />
