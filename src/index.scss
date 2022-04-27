@@ -20,6 +20,31 @@ a {
   text-decoration: none;
 }
 
+// OVERRIDES
+
 .navbar-dark .navbar-nav .nav-link {
   color: #ffffff;
+}
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  background-color: #000000 !important;
+}
+
+a.nav-link, a#navbarScrollingDropdown {
+  color: #ffffff !important;
+}
+
+.dropdown-menu.show {
+  border-radius: 0%;
+  border: 1px solid black;
+}
+
+hr.dropdown-divider {
+  border-color: #000 !important;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #fff !important;
+  background-color: #000 !important;
 }
