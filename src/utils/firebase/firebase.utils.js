@@ -16,6 +16,8 @@ import {
 	setDoc,
 	collection,
 	writeBatch,
+	query,
+	getDocs,
 } from 'firebase/firestore';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -33,7 +35,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // track analytics
-console.log('analytics', analytics);
+console.log('Analytics: Active');
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -51,17 +53,32 @@ export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
 	collectionKey,
-	objectsToAdd
+	objectsToAdd,
+	field
 ) => {
 	const collectionRef = collection(db, collectionKey);
 	const batch = writeBatch(db);
 
 	objectsToAdd.forEach((obj) => {
-		const newDocRef = doc(collectionRef, obj.title.toLowerCase());
+		const newDocRef = doc(collectionRef, obj[field]);
 		batch.set(newDocRef, obj);
 	});
 
 	return await batch.commit();
+};
+
+export const getCategoriesAndDocuments = async (collectionKey) => {
+	const collectionRef = collection(db, 'categories');
+	const q = query(collectionRef);
+	const querySnapshot = await getDocs(q);
+
+	const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+		const { title, items } = docSnapshot.data();
+		acc[title.toLowerCase()] = items;
+		return acc;
+	}, {});
+
+	return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (
