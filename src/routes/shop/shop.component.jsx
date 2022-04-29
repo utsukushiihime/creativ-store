@@ -1,28 +1,25 @@
-import { useContext, Fragment } from 'react';
+import { useContext } from 'react';
 import { CategoriesContext } from '../../contexts/categories.context';
-import ProductCard from '../../components/product-card/product-card.component';
 import { Container, Row } from 'react-bootstrap';
+import CategoryPreview from '../../components/category-preview/category-preview.component';
 import './shop.styles.scss';
+import '../../components/category-preview/category-preview.styles.scss';
 
 const Shop = () => {
 	const { categoriesMap } = useContext(CategoriesContext);
 	return (
 		<Container className='mt-4'>
-			<h1> SHOPPE</h1>
 			<Row>
-				{Object.keys(categoriesMap).map((title) => (
-					<Fragment key={title}>
-						<h2>{title}</h2>
-						<div className='row'>
-							{categoriesMap[title].map((product) => (
-								<ProductCard
-									key={product.id}
-									product={product}
-								/>
-							))}
-						</div>
-					</Fragment>
-				))}
+				{Object.keys(categoriesMap).map((key) => {
+					const products = categoriesMap[key];
+					return (
+						<CategoryPreview
+							key={key}
+							title={key}
+							products={products}
+						/>
+					);
+				})}
 			</Row>
 		</Container>
 	);
