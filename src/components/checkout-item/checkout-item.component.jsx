@@ -5,9 +5,9 @@ import { CartContext } from '../../contexts/cart.context';
 import './checkout-item.styles.scss';
 
 import {
-	RiDeleteBack2Line,
-	RiAddBoxLine,
-	RiCheckboxIndeterminateLine,
+	RiDeleteBack2Fill,
+	RiAddBoxFill,
+	RiCheckboxIndeterminateFill,
 } from 'react-icons/ri';
 
 const CheckoutItem = ({ cartItem }) => {
@@ -28,16 +28,16 @@ const CheckoutItem = ({ cartItem }) => {
 			<span className='name'> {name} </span>
 			<span className='quantity'>
 				<div className='arrow' onClick={removeItemHandler}>
-					<RiCheckboxIndeterminateLine />
+					<RiCheckboxIndeterminateFill />
 				</div>
 				<span className='value'>{quantity}</span>
 				<div className='arrow' onClick={addItemHandler}>
-					<RiAddBoxLine />
+					<RiAddBoxFill />
 				</div>
 			</span>
 			<span className='price'> {price}</span>
 			<div className='remove-button' onClick={clearItemHandler}>
-				<RiDeleteBack2Line />
+				<RiDeleteBack2Fill />
 			</div>
 		</div>
 	);

@@ -21,6 +21,23 @@
 		color: black;
 		border: 1px solid black;
 	}
+	&.add-to-cart {
+		// center button
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		// end center button
+    background-color: #00000045;
+    color: white;
+    border: 1px solid #fff;
+
+		&:hover {
+			background-color: white;
+			color: black;
+			border: 1px solid black;
+		}
+	}
 
 	&.google-sign-in {
 		background-color: #4285f4;

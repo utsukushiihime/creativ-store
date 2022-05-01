@@ -1,4 +1,4 @@
-import { useContext} from 'react';
+import { useContext } from 'react';
 import { Col, Card } from 'react-bootstrap';
 import Button from '../button/button.component';
 
@@ -25,10 +25,16 @@ const ProductCard = ({ product }) => {
 							objectFit: 'cover',
 						}}
 					/>
-					<Card.Body>
+					<Card.Body className='text-center'>
 						<Card.Title>{name}</Card.Title>
 						<Card.Text className='fs-1'>${price}</Card.Text>
-						<Button onClick={addProductToCart}>Add to Cart</Button>
+						<Button
+							type='button'
+							buttonType='addToCart'
+							onClick={addProductToCart}
+						>
+							Add to Cart
+						</Button>
 					</Card.Body>
 				</Card>
 			</Col>
