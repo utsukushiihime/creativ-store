@@ -17,7 +17,8 @@ p {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #df4d40 !important;
 }
 
 // OVERRIDES 
@@ -48,12 +49,4 @@ hr.dropdown-divider {
 .dropdown-item:hover {
   color: #fff !important;
   background-color: #000 !important;
-}
-
-.directory-container {
-  margin-top: 85px;
-}
-
-.row {
-  margin-top: 120px !important;
 }
