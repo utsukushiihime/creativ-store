@@ -65,8 +65,7 @@ const Navigation = () => {
 							</NavDropdown>
 						</Nav>
 						<Nav>
-							<Nav.Link href='shop'>Shop</Nav.Link>
-
+							<Nav.Link href='/shop'>Shop</Nav.Link>
 							{currentUser ? (
 								<Nav.Link>
 									<span onClick={signOutHandler}>
