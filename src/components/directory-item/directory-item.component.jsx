@@ -1,5 +1,4 @@
 import { DirectoryItemContainer } from './directory-item.styles';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const DirectoryItem = ({ category }) => {
