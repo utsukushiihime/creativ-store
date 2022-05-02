@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './category.styles.scss';
-import { Container, Row } from 'react-bootstrap';
+import './category.styles';
+import { Row } from 'react-bootstrap';
 
 import { CategoriesContext } from '../../contexts/categories.context';
 import ProductCard from '../../components/product-card/product-card.component';
+import { CategoryContainer } from './category.styles';
 
 const Category = () => {
 	const { category } = useParams();
@@ -17,7 +18,7 @@ const Category = () => {
 	}, [category, categoriesMap]);
 
 	return (
-		<Container className='category-preview-container'>
+		<CategoryContainer>
 			<Row>
 				<h2 className='title'>{category.toUpperCase()}</h2>
 				{products &&
@@ -25,7 +26,7 @@ const Category = () => {
 						<ProductCard key={product.id} product={product} />
 					))}
 			</Row>
-		</Container>
+		</CategoryContainer>
 	);
 };
 

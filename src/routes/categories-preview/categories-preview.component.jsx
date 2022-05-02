@@ -2,7 +2,8 @@ import { useContext } from 'react';
 
 import { CategoriesContext } from '../../contexts/categories.context';
 
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { CategoriesPreviewContainer } from './categories-preview.styles';
 
 import CategoryPreview from '../../components/category-preview/category-preview.component';
 import '../../components/category-preview/category-preview.styles.scss';
@@ -10,7 +11,7 @@ import '../../components/category-preview/category-preview.styles.scss';
 const CategoriesPreviwew = () => {
 	const { categoriesMap } = useContext(CategoriesContext);
 	return (
-		<Container className='mt-4'>
+		<CategoriesPreviewContainer>
 			<Row>
 				{Object.keys(categoriesMap).map((key) => {
 					const products = categoriesMap[key];
@@ -23,7 +24,7 @@ const CategoriesPreviwew = () => {
 					);
 				})}
 			</Row>
-		</Container>
+		</CategoriesPreviewContainer>
 	);
 };
 
