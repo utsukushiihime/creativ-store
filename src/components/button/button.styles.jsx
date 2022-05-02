@@ -1,4 +1,6 @@
-.button-container {
+import styled from 'styled-components';
+
+export const BaseButton = styled.button`
 	min-width: 165px;
 	width: auto;
 	height: 50px;
@@ -28,9 +30,9 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		// end center button
-    background-color: #00000045;
-    color: white;
-    border: 1px solid #fff;
+		background-color: #00000045;
+		color: white;
+		border: 1px solid #fff;
 
 		&:hover {
 			background-color: white;
@@ -60,4 +62,4 @@
 			border: none;
 		}
 	}
-}
+`;

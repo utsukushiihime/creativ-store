@@ -6,7 +6,6 @@ import { Row } from 'react-bootstrap';
 import { CategoriesPreviewContainer } from './categories-preview.styles';
 
 import CategoryPreview from '../../components/category-preview/category-preview.component';
-import '../../components/category-preview/category-preview.styles.scss';
 
 const CategoriesPreviwew = () => {
 	const { categoriesMap } = useContext(CategoriesContext);

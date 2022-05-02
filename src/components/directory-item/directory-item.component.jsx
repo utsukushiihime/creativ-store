@@ -1,4 +1,4 @@
-import './directory-item.styles.scss';
+import { DirectoryItemContainer} from './directory-item.styles';
 import { Link } from 'react-router-dom';
 
 // TODO Add Styled Components
@@ -8,7 +8,7 @@ const DirectoryItem = ({ category }) => {
 
 	return (
 		<>
-			<div className='directory-item-container'>
+			<DirectoryItemContainer>
 				<div
 					className='background-image'
 					style={{
@@ -19,7 +19,7 @@ const DirectoryItem = ({ category }) => {
 					<h2>{title.toUpperCase()}</h2>
 					<Link to={`/shop/${title}`}>Shop Now</Link>
 				</div>
-			</div>
+			</DirectoryItemContainer>
 		</>
 	);
 };
