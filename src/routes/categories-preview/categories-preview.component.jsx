@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import { useSelector } from "react-redux";
 
-import { CategoriesContext } from '../../contexts/categories.context';
+import { Row } from "react-bootstrap";
+import { CategoriesPreviewContainer } from "./categories-preview.styles";
 
-import { Row } from 'react-bootstrap';
-import { CategoriesPreviewContainer } from './categories-preview.styles';
+import CategoryPreview from "../../components/category-preview/category-preview.component";
 
-import CategoryPreview from '../../components/category-preview/category-preview.component';
+import { categorySelector } from "../../store/categories/category.selector";
 
 const CategoriesPreviwew = () => {
-	const { categoriesMap } = useContext(CategoriesContext);
+	const { categoriesMap } = useSelector(categorySelector);
 	return (
 		<CategoriesPreviewContainer>
 			<Row>
